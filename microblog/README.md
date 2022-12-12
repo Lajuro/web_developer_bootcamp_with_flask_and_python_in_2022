@@ -163,3 +163,7 @@ In the `templates/index.html` file, we are going to use the `for` loop to iterat
   </section>
 <!-- [...] Next Tags -->
 ```
+
+## **Using MongoDB**
+
+We are going to use `MongoDB` to store the entries, so take a look at the notes that I have created about what is MongoDB and how to set up a database and a cluster database. You can access [clicking here](MONGODB.md).
