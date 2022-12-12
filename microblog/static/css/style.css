@@ -1,0 +1,187 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: "Roboto", sans-serif;
+  font-size: 62.5%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: space-between;
+
+  font-size: 1.6rem;
+  line-height: 1.5;
+}
+
+.navbar {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  max-width: 640px;
+  margin: 5rem auto;
+  padding: 0 2rem;
+}
+
+.navbar__brand {
+  display: flex;
+
+  align-items: center;
+
+  font-size: 1.6rem;
+}
+
+.navbar__logo {
+  margin-right: 3rem;
+}
+
+.navbar__navigation {
+  display: flex;
+
+  color: var(--slate-400);
+
+  list-style: none;
+}
+
+.navbar__navigation-item {
+  margin-left: 5rem;
+}
+
+.navbar__navigation-link {
+  color: inherit;
+
+  text-decoration: none;
+}
+
+.main {
+  max-width: 450px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.form {
+  display: flex;
+
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.form__input {
+  width: 100%;
+}
+
+.form__label {
+  display: block;
+
+  margin-bottom: 1rem;
+}
+
+.form__textarea {
+  background-color: var(--slate-50);
+
+  border: none;
+  border-radius: 0.5rem;
+
+  font-size: 1.8rem;
+
+  width: inherit;
+  padding: 1.2rem 2rem;
+  margin-bottom: 1rem;
+}
+
+.form__submit {
+  background-color: var(--blue-500);
+  color: var(--white);
+
+  border: none;
+  border-radius: 2rem;
+
+  font-size: 1.8rem;
+  font-weight: bold;
+
+  padding: 0.5rem 3rem;
+
+  cursor: pointer;
+}
+
+.form__submit:hover {
+  background-color: var(--blue-550);
+}
+
+.entry {
+  margin-top: 5rem;
+}
+
+.entry__title {
+  display: inline;
+
+  font-size: 1.8rem;
+}
+
+.entry__date {
+  color: var(--slate-400);
+}
+
+.entry__content {
+  font-size: 1.6rem;
+  line-height: 150%;
+}
+
+.footer {
+  background-color: var(--slate-700);
+  color: var(--white);
+
+  border-top: 4px solid var(--black);
+
+  font-size: 1.2rem;
+
+  padding: 4rem 0;
+  margin-top: 5rem;
+}
+
+.footer__content {
+  display: flex;
+
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.footer .left {
+  display: flex;
+
+  flex-grow: 2;
+  flex-direction: column;
+}
+
+.footer .right {
+  flex-grow: 1;
+
+  display: flex;
+}
+
+.footer__column {
+  display: flex;
+  flex-direction: column;
+  margin-left: 5rem;
+}
+
+.footer__item {
+  color: inherit;
+
+  text-decoration: none;
+
+  margin-bottom: 0.5rem;
+}
+
+.footer__item:hover {
+  text-decoration: underline;
+}
