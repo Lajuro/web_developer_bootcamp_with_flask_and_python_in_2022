@@ -117,6 +117,10 @@ body {
   background-color: var(--blue-550);
 }
 
+.posts__empty {
+  color: var(--slate-400);
+}
+
 .entry {
   margin-top: 5rem;
 }

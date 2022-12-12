@@ -54,16 +54,19 @@
         <section class="posts">
           <h1>Recent posts</h1>
 
+          {% if not entries %}
+          <p class="posts__empty">No entries yet</p>
+          {% else %} {% for entry in entries %}
           <article class="entry">
             <header class="entry__header">
-              <h2 class="entry__title">A bit of a chill day today</h2>
-              <time class="entry__date" datetime="2022-12-11">• Dec 11</time>
+              <h2 class="entry__title">{{ entry[0] | truncate(30, true) }}</h2>
+              <time class="entry__date" datetime="2022-12-11"
+                >• {{ entry[1] }}</time
+              >
             </header>
-            <p class="entry__content">
-              Today I couldn't do much programming, but that's PK! Can't be too
-              awesome every day now!
-            </p>
+            <p class="entry__content">{{ entry[0] }}</p>
           </article>
+          {% endfor %} {% endif %}
         </section>
       </main>
       <!-- Main content END -->

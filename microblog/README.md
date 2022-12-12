@@ -119,3 +119,47 @@ def index():
     return render_template('index.html')
 ```
 
+## **Creating a list of entries**
+
+Let's create a list of entries.
+
+### **Python**
+
+```python
+# [...] Code
+entries = []
+
+@app.route('/', methods=['GET', 'POST'])
+def home():
+    if request.method == 'POST':
+        entry_content = request.form.get('content')
+        formatted_date = datetime.datetime.today().strftime('%Y-%m-%d %H:%M:%S')
+        entries.append((entry_content, formatted_date))
+    return render_template('index.html', entries)
+```
+
+### **HTML**
+
+In the `templates/index.html` file, we are going to use the `for` loop to iterate over the `entries` list. If there are no entries, the `for` loop will not be executed and will be displayed a message.
+
+```html
+<!-- [...] Previous Tags -->
+  <section class="posts">
+    <h1>Recent posts</h1>
+
+    {% if not entries %}
+    <p class="posts__empty">No entries yet</p>
+    {% else %} {% for entry in entries %}
+    <article class="entry">
+      <header class="entry__header">
+        <h2 class="entry__title">{{ entry[0] | truncate(30, true) }}</h2>
+        <time class="entry__date" datetime="2022-12-11"
+          >• {{ entry[1] }}</time
+        >
+      </header>
+      <p class="entry__content">{{ entry[0] }}</p>
+    </article>
+    {% endfor %} {% endif %}
+  </section>
+<!-- [...] Next Tags -->
+```
