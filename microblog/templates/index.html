@@ -1,93 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="stylesheet" href="static/css/variables.css">
-  <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/variables.css" />
+    <link rel="stylesheet" href="static/css/style.css" />
 
-  <title>Microblog</title>
-</head>
-<body>
-  <!-- Container Wrapper -->
-  <div class="container-wrapper">
-
-    <!-- Navbar -->
-    <nav class="navbar">
-      <div class="navbar__brand">
-        <img class="navbar__logo" src="static/images/logo.svg" alt="The Microblog logo">Microblog
-      </div>
-      <ul class="navbar__navigation">
-        <li class="navbar__navigation-item">
-          <a href="#" class="navbar__navigation-link">Recent</a>
-        </li>
-        <li class="navbar__navigation-item">
-          <a href="#" class="navbar__navigation-link">Calendar</a>
-        </li>
-      </ul>
-    </nav>
-    <!-- Navbar END -->
-
-    <!-- Main content -->
-    <main class="main">
-  
-      <section>
-        <h1>Add new entry</h1>
-        <form class="form" action="/entry" method="POST">
-  
-          <section class="form__input">
-            <label class="form__label" for="entry">Entry contents</label>
-            <textarea class="form__textarea" name="content" id="entry"></textarea>
-          </section>
-  
-          <button class="form__submit" type="submit">Add entry</button>
-        </form>
-      </section>
-  
-      <section class="posts">
-        <h1>Recent posts</h1>
-  
-        <article class="entry">
-          <header class="entry__header">
-            <h2 class="entry__title">A bit of a chill day today</h2>
-            <time class="entry__date" datetime="2022-12-11">• Dec 11</time>
-          </header>
-          <p class="entry__content">
-            Today I couldn't do much programming, but that's PK! Can't be too awesome every day now!
-          </p>
-        </article>
-  
-      </section>
-  
-    </main>
-    <!-- Main content END -->
-  </div>
-  <!-- Container Wrapper END -->
-  
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer__content">
-
-      <section class="left">
-        <a href="#" class="footer__item">Made by Roberto Camargo</a>
-        <a href="#" class="footer__item">Check out my other projects</a>
-      </section>
-      
-      <section class="right">
-        <div class="footer__column">
-          <a href="#" class="footer__item">Recent</a>
-          <a href="#" class="footer__item">Calendar</a>
+    <title>Microblog</title>
+  </head>
+  <body>
+    <!-- Container Wrapper -->
+    <div class="container-wrapper">
+      <!-- Navbar -->
+      <nav class="navbar">
+        <div class="navbar__brand">
+          <img
+            class="navbar__logo"
+            src="static/images/logo.svg"
+            alt="The Microblog logo"
+          />Microblog
         </div>
-        <div class="footer__column">
-          <a href="#" class="footer__item">About</a>
-          <a href="#" class="footer__item">How this was made</a>
-        </div>
-      </section>
+        <ul class="navbar__navigation">
+          <li class="navbar__navigation-item">
+            <a href="#" class="navbar__navigation-link">Recent</a>
+          </li>
+          <li class="navbar__navigation-item">
+            <a href="#" class="navbar__navigation-link">Calendar</a>
+          </li>
+        </ul>
+      </nav>
+      <!-- Navbar END -->
 
+      <!-- Main content -->
+      <main class="main">
+        <section>
+          <h1>Add new entry</h1>
+          <form class="form" method="POST">
+            <section class="form__input">
+              <label class="form__label" for="entry">Entry contents</label>
+              <textarea
+                class="form__textarea"
+                name="content"
+                id="entry"
+              ></textarea>
+            </section>
+
+            <button class="form__submit" type="submit">Add entry</button>
+          </form>
+        </section>
+
+        <section class="posts">
+          <h1>Recent posts</h1>
+
+          <article class="entry">
+            <header class="entry__header">
+              <h2 class="entry__title">A bit of a chill day today</h2>
+              <time class="entry__date" datetime="2022-12-11">• Dec 11</time>
+            </header>
+            <p class="entry__content">
+              Today I couldn't do much programming, but that's PK! Can't be too
+              awesome every day now!
+            </p>
+          </article>
+        </section>
+      </main>
+      <!-- Main content END -->
     </div>
-  </footer>
-  <!-- Footer END -->
-</body>
+    <!-- Container Wrapper END -->
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer__content">
+        <section class="left">
+          <a href="#" class="footer__item">Made by Roberto Camargo</a>
+          <a href="#" class="footer__item">Check out my other projects</a>
+        </section>
+
+        <section class="right">
+          <div class="footer__column">
+            <a href="#" class="footer__item">Recent</a>
+            <a href="#" class="footer__item">Calendar</a>
+          </div>
+          <div class="footer__column">
+            <a href="#" class="footer__item">About</a>
+            <a href="#" class="footer__item">How this was made</a>
+          </div>
+        </section>
+      </div>
+    </footer>
+    <!-- Footer END -->
+  </body>
 </html>

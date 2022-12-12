@@ -85,3 +85,37 @@ flask run
 > ```
 >
 > Don't forget to run the `flask run` command in the folder where the `app.py` file is located.
+
+## **Receiving form data using Flask**
+
+As I want to make the request action send the data to the same page, you can remove the `action` attribute from the form.
+
+```html
+<form class="form" method="POST">
+```
+
+### **Setting method types that the main route can handle**
+
+Let's add the `methods` argument to the `@app.route()` decorator and set it to `['GET', 'POST']`.
+
+```python
+# [...] Code
+@app.route('/', methods=['GET', 'POST'])
+# [...] Code
+```
+
+#### **Dealing with the POST request**
+
+Let's add the `if` statement to the `index()` function.
+
+```python
+# [...] Code
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    if request.method == 'POST':
+        entry_content = request.form.get('content')
+        formatted_date = datetime.datetime.today().strftime('%Y-%m-%d %H:%M:%S')
+        print(entry_content, formatted_date)
+    return render_template('index.html')
+```
+

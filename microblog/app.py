@@ -1,7 +1,13 @@
-from flask import Flask, render_template
+import datetime
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-@app.route('/')
+
+@app.route('/', methods=['GET', 'POST'])
 def home():
-  return render_template('index.html')
+    if request.method == 'POST':
+        entry_content = request.form.get('content')
+        formatted_date = datetime.datetime.today().strftime('%Y-%m-%d %H:%M:%S')
+        print(entry_content, formatted_date)
+    return render_template('index.html')
