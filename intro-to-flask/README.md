@@ -164,20 +164,4 @@ To test the new route, navigate to `http://127.0.0.1:5000/first_page`.
 
 ## Using Jinja2 template engine
 
-### What is Jinja2?
-
-Jinja2 is a modern and designer-friendly templating language for Python, modelled after Django’s templates. It is fast, widely used and secure with the optional sandboxed template execution environment. It is an open-source project, BSD licensed.
-
-### Using Jinja2
-
-To use Jinja2, let's reset our `app.py` file to the following code:
-
-```python
-from flask import Flask, render_template
-
-app = Flask(__name__)
-
-
-@app.route('/')
-
-```
+In order to understand more about the Jinja2 template engine, you can check information about it [here](ABOUT_JINJA2.md).
