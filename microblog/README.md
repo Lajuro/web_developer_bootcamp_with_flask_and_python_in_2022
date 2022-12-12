@@ -167,3 +167,113 @@ In the `templates/index.html` file, we are going to use the `for` loop to iterat
 ## **Using MongoDB**
 
 We are going to use `MongoDB` to store the entries, so take a look at the notes that I have created about what is MongoDB and how to set up a database and a cluster database. You can access [clicking here](MONGODB.md).
+
+### **Installing the `pymongo` module**
+
+Let's install the `pymongo` module.
+
+```bash
+pip install pymongo[srv]
+```
+
+> **Note**
+> 
+> The `[srv]` part is optional, but it is recommended to use it because it comes with some extra packages that are useful for working with MongoDB Atlas.
+
+### **Configurating the MongoDB connection**
+
+In the `app.py` file, let's import the `MongoClient` class from the `pymongo` module.
+
+```python
+# [...] Code
+from pymongo import MongoClient
+
+app = Flask(__name__)
+client = MongoClient('mongodb+srv://<username>:<password>@<cluster-address>/test')
+app.db = client.<database-name>
+# [...] Code
+```
+
+After doing that, inside the function that handles the POST request, let's insert the entry into the database.
+
+```python
+# [...] Code
+@app.route('/', methods=['GET', 'POST'])
+def home():
+    if request.method == 'POST':
+        entry_content = request.form.get('content')
+        formatted_date = datetime.datetime.today().strftime('%Y-%m-%d')
+        entries.append((entry_content, formatted_date))
+        # The line below is new
+        app.db.entries.insert_one(
+            {'content': entry_content, 'date': formatted_date}
+        )
+
+    entries_with_date = [
+        (
+            entry[0],
+            entry[1],
+            datetime.datetime.strptime(entry[1], '%Y-%m-%d').strftime('%b %d')
+        )
+        for entry in entries
+    ]
+    return render_template('index.html', entries=entries_with_date)
+# [...] Code
+```
+
+#### **Testing the app**
+
+Restart the app and try to add some entries. After that, go to the MongoDB Atlas dashboard and check if the entries were added to the database.
+
+## **Hiding the MongoDB credentials**
+
+As it's not a good practice to store the MongoDB credentials in the code, let's create a `.env` file and store the credentials there. But first, let's install the `python-dotenv` module.
+
+```bash
+pip install python-dotenv
+```
+
+### **Creating the `.env` file**
+
+Let's create the `.env` file and store the MongoDB credentials there.
+
+```bash
+MONGODB_URI=mongodb+srv://<username>:<password>@<cluster-address>/test
+```
+> **Note**
+>
+> It's also a good practice to add the `.env` file to the `.gitignore` file and create a `.env.example` file with the same content as the `.env` file but without the credentials.
+
+### **Loading the `.env` file**
+
+Let's load the `.env` file in the `app.py` file, so you need to import `os` and `load_dotenv` from the `dotenv` module, like the example below:
+
+```python
+# [...] Code
+import os
+import datetime
+from flask import Flask, render_template, request
+from dotenv import load_dotenv
+from pymongo import MongoClient
+
+load_dotenv()
+app = Flask(__name__)
+
+client = MongoClient(os.getenv('MONGODB_URI'))
+app.db = client.<database-name>
+# [...] Code
+```
+
+> **Note**
+>
+> To get the environment variable, you can use the `os.getenv()` function or the `os.environ.get()` function.
+
+### **Adding the `.env` file to the `.gitignore` file**
+
+Let's add the `.env` file to the `.gitignore` file.
+
+```bash
+# [...] Code
+.env
+# [...] Code
+```
