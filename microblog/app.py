@@ -23,10 +23,11 @@ def home():
             {'content': entry_content, 'date': formatted_date})
     entries_with_date = [
         (
-            entry[0],
-            entry[1],
-            datetime.datetime.strptime(entry[1], '%Y-%m-%d').strftime('%b %d')
+            entry['content'],
+            entry['date'],
+            datetime.datetime.strptime(
+                entry['date'], '%Y-%m-%d').strftime('%b %d')
         )
-        for entry in entries
+        for entry in app.db.entries.find({})
     ]
     return render_template('index.html', entries=entries_with_date)
